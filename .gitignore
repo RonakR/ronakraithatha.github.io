@@ -6,3 +6,4 @@ pages/.manifest
 .idea
 gatsby-starter-lumen.iml
 CNAME
+config.toml
