@@ -1,0 +1,11 @@
+siteTitle = "Ronak's Blog"
+siteDescr = "Random ramblings and relatively interesting finds from my day to day."
+siteAuthor = "Ronak Raithatha"
+
+siteTwitterUrl = "http://www.twitter.com/BaronVonRatata"
+siteGithubUrl = "http://www.github.com/RonakR"
+siteEmailUrl = "ronaksraithatha@gmail.com"
+
+googleAnalyticsId = ""
+
+linkPrefix = "/gatsby-starter-lumen"
