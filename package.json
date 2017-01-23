@@ -56,14 +56,19 @@
     "file-loader": "^0.9.0",
     "gh-pages": "^0.11.0",
     "image-webpack-loader": "^2.0.0",
+    "js-yaml": "^3.7.0",
     "lost": "^7.0.3",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.17.1",
     "null-loader": "^0.1.1",
     "postcss-loader": "^0.9.1",
+    "prompt": "^1.0.0",
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "redbox-react": "^1.2.10",
     "rucksack-css": "^0.8.5",
     "style-loader": "^0.13.1",
+    "underscore": "^1.8.3",
     "webpack": "^1.13.1"
   }
 }
