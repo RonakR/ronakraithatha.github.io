@@ -49,6 +49,9 @@
 	line-height: 31px;
 	margin-bottom: 31px;
 }
+.blog-single .text a{
+  color: #e81c4f;
+}
 .blog-single pre, .blog-single code {
   max-width: 900px;
 	margin-top: 10px;
