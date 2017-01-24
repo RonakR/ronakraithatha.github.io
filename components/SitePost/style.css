@@ -49,7 +49,15 @@
 	line-height: 31px;
 	margin-bottom: 31px;
 }
-.blog-single h1, .blog-single .date-published, .blog-single .text *:not(div) {
+.blog-single pre, .blog-single code {
+  max-width: 900px;
+	margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+	margin-bottom: 20px;
+  line-height: 30px;
+}
+.blog-single h1, .blog-single .date-published, .blog-single .text *:not(div,code,pre) {
 	max-width: 630px;
 	margin-left: auto;
 	margin-right: auto;
