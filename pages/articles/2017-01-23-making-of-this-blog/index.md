@@ -12,10 +12,10 @@ For a while I've been wanting to create a place where I can post tidbits of info
 In this post I'm going demonstrate:
 1. How to set up Gatsby
 2. Add a theme to it
-4  Creating a new post
-3. Push the blog to GitHub
-4. Host it on GitHub pages
-5. Redirect that GitHub page to a custom domain.
+3. Creating a new post
+4. Push the blog to GitHub
+5. Host it on GitHub pages
+6. Redirect that GitHub page to a custom domain.
 
 
 ## Setting up Gatsby
@@ -66,7 +66,7 @@ Having added links to social media, it's time we updated the page to reflect tha
 
 Next we'll the contents of the blog. Starting with the 'About me' and 'Contact Me' pages, the code to which can be found in the `index.jsx` file under `pages/pages/about` and `pages/pages/contact` respectively. As for the blogs, they are located under `pages/articles`. If you decide to get rid of the blogs, in the next section I have a script that creates a new post for you.
 
-## Creating a post
+## Creating a new post
 
 It's quite arduous creating a blog post, especially with the date format in the file and the folder name. I searched around Gatsby to see if they had an auto-create but couldn't find anything. I did however run into this [script](https://github.com/pamo/pamo.github.io/blob/development/new_post.js), pretty solid script. I made a couple additions to include a couple more details, here is my script:
 
@@ -114,5 +114,3 @@ This script is also in [my repo](https://github.com/RonakR/ronakraithatha.github
 Run the script in your terminal with: `node <file_name>.js`
 
 Follow the prompts and viola, a new folder and post with the frontmatter will be added to your `pages/articles`.
-
-
