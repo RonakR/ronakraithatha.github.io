@@ -20,7 +20,7 @@ prompt.get(['title', 'path', 'category', 'description'], (err, result) => {
     date: moment().toJSON(),
     layout: 'post',
     draft: true,
-    path: `/${result.path}/`,
+    path: `/${ _.slugify(result.path) }/`,
     category: result.category,
     description: result.description,
   }

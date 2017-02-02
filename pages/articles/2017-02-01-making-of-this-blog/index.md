@@ -1,10 +1,10 @@
 ---
 title: Making of this Blog
-date: '2017-01-24T01:46:00.378Z'
+date: '2017-02-02T02:35:47.008Z'
 layout: post
 path: /making-of-this-blog/
 category: FrontEnd
-description: Making this Blog
+description: The self-referential post on the inception of this blog, with step-by-step sections from getting started to displaying it on your own domain.
 ---
 
 For a while I've been wanting to create a place where I can post tidbits of information I've learned through my days, both at work and outside. I set up a couple static site generators trying to find one I like working with. I tested with [Jekyll](https://jekyllrb.com/), [Middleman](https://middlemanapp.com/), [Hexo](https://hexo.io/) and finally landed on [Gatsby](https://www.staticgen.com/gatsby) after coming across it on [risingstars2016](https://risingstars2016.js.org/).
@@ -15,7 +15,7 @@ In this post I'm going demonstrate:
 3. Creating a new post
 4. Push blog to GitHub
 5. Host blog on GitHub Pages
-6. Redirect GitHub Pages to a custom domain.
+6. Redirect GitHub Pages to a custom domain
 
 
 ## Setting up Gatsby
@@ -156,7 +156,31 @@ There is a script in the `package.json` file in the root directory of the blog n
 ```
 That link used the [gh-pages npm library](https://www.npmjs.com/package/gh-pages) to publish files to a `gh-pages` branch on the repo.
 
-Dissecting that script will help better understand it. The first part `gatsby build --prefix-links` builds the blog (taking into accoutnt he `linkPrefix`) and that build is stored in `/public`. `gh-pages -d public` then takes the contents of `/public` and creates a `gh-pages` with them. To run the script from the `package.json` type `npm run <script_name>` in the CLI. In this case it will be: `npm run deploy`
+Dissecting that script will help better understand it. The first part `gatsby build --prefix-links` builds the blog (taking into accoutnt he `linkPrefix`) and that build is stored in `/public`. `gh-pages -d public` then takes the contents of `/public` and creates a `gh-pages` with them.
+
+To run the script from the `package.json` type `npm run <script_name>` in the CLI. In this case it will be: `npm run deploy`
 
 Voila, if everything went without a hitch, visit `<username>.github.io/<repo_name>` to see your blog. At this point you have a blog on the internet. Go forth and write about your day-to-day escapades. Remember to keep your repository on GitHub up to date.
 
+## Redirect GitHub Pages to a custom domain
+
+To redirect the blog to a custom domain we'll first off need a custom domain. You can purchase these from Domain Name System (DNS) Hosting Service. I've purchased mine from [Goole Domains](https://domains.google.com/), but you can purchase one from a number of other places like [GoDaddy](https://www.godaddy.com/), [NameCheap](https://www.namecheap.com/), etc. For the following example I'll be sticking to Google Domains, but the concepts are shared between all the sites mentioned above.
+
+First off, GitHub needs to be updated on where to direct the repository. This can be changed in the `settings` tab on the main repository page. Scroll down to `GitHub Pages`, type out the domain you purchased under the `Custom domain` section. Now if you return to the `code` tab, click on the `branches` dropdown and select `gh-pages` you'll notice there is a `CNAME` file that was recently added, the content of which is a single line with your custom domain. I'll mention more on the file further into this section.
+
+GitHub is now aware of which domain to serve the blog from. Next we need to add a similar linking from your DNS Hosting Service to GitHub, which can be done from the control panel of your DNS Hosting Service. Visit [Goole Domains](https://domains.google.com/), login if you need to, click on the `Configure DNS` tab in the same row as your domain name, and scroll down to `Custom resource records`.
+
+Here we will be adding a couple resource records, namely A records and CNAME records. The A record generally maps a hostname to an IP addres, in this case we'll me mapping to some IP addresses over at GitHub. The CNAME record maps an alias name to a canonical (true) domain name, i.e. maps `www` to `<username>.github.io`.
+
+Here is an image of what these configs should look like:
+![Google Domains Config](./domainsConfig.png)
+
+Give a couple minutes to propagate these changes across multiple DNSs and you should see the that your custom domain now displays your blog.
+
+But, if you notice your social icons aren't showing up, and clicking on your blog posts takes you to a page not found. Click on a blog and pay attention to the URL in the address bar, it should look something like this `<domain>/<linkPrefix>/<blogName>`. Now that the blog is running from the custom domain the linkPrefix is of no use, change it in your `config.toml` to empty quotes, run `npm run deploy` and visit your site.
+
+Oh no, what's this?! A 404 page that says the site is not here anymore? Well, what happens when `npm run deploy` is executed is that it overwrites anything in the `gh-pages` branch with the new contents from `/public`. In doing so it also gets rid of that `CNAME` file mentioned above, this fix however is pretty simple. Go back to the `settings` tab in your repository on GitHub and add your custom domain to the the `Custom domain` section. Give it a minute and you should see your site back up on your custom domain with working links.
+
+## Conclusion
+
+That's it! You now have a blog and it's on you own domain. Remove the placeholder blog posts, updated the contents of the `About me` and `Contact me` pages, and keep the GitHub repository up to date. In the `config.toml` there is a stop for a `googleAnalyticsId` which you can get from [Google Analytics](https://www.google.com/analytics/). Feel free to hit me up on [Twitter](https://twitter.com/BaronVonRatata) with any questions/corrections.
